@@ -177,7 +177,7 @@ int main()
     x = x - y; // 20
     cout << "After swaping x= " << x << " y= " << y << endl;
     cout << "\n______________________________________________________\n";
-*/
+
     cout << "________Welcome to BMI Calculator_________\n";
     float weight, height;
     cout << "Enter your weight(kg) : ";
@@ -190,16 +190,32 @@ int main()
         cout << "Underweight\n";
     }
     else
-    { 
+    {
         if (BMI > 25)
             cout << "Over Weight\n";
         else
             cout << "normal Weight\n";
     }
     cout << "Your BMI is: " << BMI << endl;
+    cout << "\n______________________________________________________\n";
+*/
+    system("cls");
+    cout << "______Welcome to Guessing Number and finding that Number game______\n";
+    int hostUserNumber, guestUserNumber;
+    cout << "Host: ";
+    cin >> hostUserNumber;
+    system("cls");
+    cout << "Guest: ";
+    cin >> guestUserNumber;
+    //(hostUserNumber == guestUserNumber) ? cout << "Correct! Good Job\n" : cout << "Failed! Try another one\n"; //Ternary operator, This single line work as like if-else statement work.
+    if (hostUserNumber == guestUserNumber)
+        cout<< "Correct! Good Job\n";
+    else
+        cout << "Failed! Try another one\n";
 
+    cout << "\n______________________________________________________\n";
     // system("cls"); Clear Screen or terminal
-    cout << "\nWatch Video from 2:50:00\n";
+    // cout << "\nWatch Video from 2:50:00\n";
     system("pause>0");
 
     return 0;
