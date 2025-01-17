@@ -1,7 +1,7 @@
 from turtle import *
 
 # Set background color
-bgcolor("cyan")
+bgcolor("gray")
 
 # Set drawing color
 color("red")
@@ -29,7 +29,7 @@ goto(0, -100)
 pendown()
 
 # Write the text
-color("black")
+color("white")
 write("Love from Professor", align="center", font=("Arial", 20, "bold"))
 
 # Hide the turtle

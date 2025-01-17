@@ -20,6 +20,6 @@ int main()
     // cout<<"The Greater No in " <<a<< " and "<<b<<" is "<<Z<<endl;
     Y = CompareNo(a, b, c);
     cout << "The Greater number in " << a << ", " << b << " and " << c << " is " << Y << endl;
-    system("pause");
+    system("pause>0");
     return 0;
 }

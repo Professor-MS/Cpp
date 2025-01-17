@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-//In this Example we are discused about Virtual Class
+// In this Example we are discused about Virtual Class
 class Student
 {
 protected:

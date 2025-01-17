@@ -25,7 +25,7 @@ def image_to_ascii(image_path, output_width=100):
     return ascii_str
 
 # Example usage
-image_path = r'D:\Fiverr Data\ProfessorPic.jpg'  # Use raw string
+image_path = r'D:\profile.jpg'  # Use raw string
 ascii_art = image_to_ascii(image_path)
 print(ascii_art)
 

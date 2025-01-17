@@ -49,5 +49,6 @@ int main()
     der.setdata();
     der.process();
     der.display();
+    system("pause>0");
     return 0;
 }

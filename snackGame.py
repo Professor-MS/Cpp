@@ -20,7 +20,7 @@ pygame.display.set_caption('Snake Game')
 
 clock = pygame.time.Clock()
 snake_block = 10
-snake_speed = 15
+snake_speed = 10
 
 font_style = pygame.font.SysFont(None, 50)
 score_font = pygame.font.SysFont(None, 35)
@@ -50,8 +50,8 @@ def gameLoop():
     snake_List = []
     Length_of_snake = 1
 
-    foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
-    foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+    foodx = round(random.randrange(0, dis_width - snake_block) / 15.0) * 10.0
+    foody = round(random.randrange(0, dis_height - snake_block) / 15.0) * 10.0
 
     score = 0
 
@@ -113,7 +113,7 @@ def gameLoop():
             foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
             foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
             Length_of_snake += 1
-            score += 1
+            score += 4
 
         clock.tick(snake_speed)
 

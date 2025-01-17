@@ -37,7 +37,8 @@ int main()
     monsters[0] = new Dragon();
     monsters[1] = new Zombie();
     monsters[2] = new Vampire();
-    for (int i=0; i<=2;i++)
-    monsters[i]->AttackOfMonster();
+    for (int i = 0; i <= 2; i++)
+        monsters[i]->AttackOfMonster();
+    system("pause>0");
     return 0;
 }
