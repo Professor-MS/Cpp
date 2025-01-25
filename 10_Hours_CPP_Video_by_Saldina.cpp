@@ -1,5 +1,18 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
+float sum(float a, int b)
+{
+    return a + b;
+}
+float subtract(float a, int b)
+{
+    return a - b;
+}
+float divide(float a, int b)
+{
+    return a / b;
+}
 
 int main()
 {
@@ -198,7 +211,7 @@ int main()
     }
     cout << "Your BMI is: " << BMI << endl;
     cout << "\n______________________________________________________\n";
-*/
+
     system("cls");
     cout << "______Welcome to Guessing Number and finding that Number game______\n";
     int hostUserNumber, guestUserNumber;
@@ -209,13 +222,288 @@ int main()
     cin >> guestUserNumber;
     //(hostUserNumber == guestUserNumber) ? cout << "Correct! Good Job\n" : cout << "Failed! Try another one\n"; //Ternary operator, This single line work as like if-else statement work.
     if (hostUserNumber == guestUserNumber)
-        cout<< "Correct! Good Job\n";
+        cout << "Correct! Good Job\n";
     else
         cout << "Failed! Try another one\n";
 
     cout << "\n______________________________________________________\n";
+
+    cout << "\t\tWelcome to Professor Calculator\n";
+    float number1, number2;
+    char Operation;
+    cin >> number1 >> Operation >> number2;
+    switch (Operation)
+    {
+    case '-':
+        cout << number1 << Operation << number2 << " = " << number1 - number2 << endl;
+        break;
+    case '+':
+        cout << number1 << Operation << number2 << " = " << number1 + number2 << endl;
+        break;
+    case '*':
+        cout << number1 << Operation << number2 << " = " << number1 * number2 << endl;
+        break;
+    case '/':
+        cout << number1 << Operation << number2 << " = " << number1 / number2 << endl;
+        break;
+    case '%':
+        bool num1Int, num2Int;
+        num1Int = ((int)number1 == number1);
+        num2Int = ((int)number2 == number2);
+        if (num1Int && num2Int)
+        {
+            cout << number1 << Operation << number2 << " = " << (int)number1 % (int)number2 << endl;
+        }
+        else
+            cout << "Not Valid!\n";
+
+        break;
+
+    default:
+        cout << "Invalid Operation!\n";
+        break;
+    }
+    cout << "\n______________________________________________________\n";
+    cout << "Choose year and month to know days in the month\n";
+
+    int year, month;
+    cout << "Enter Year & month ";
+    cin >> year >> month;
+    switch (month)
+    {
+    case 2:
+        (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) ? cout << "29 days month\n" : cout << "28 days month\n";
+        break;
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+        cout << "30 days month\n";
+        break;
+    case 1:
+    case 3:
+    case 5:
+    case 7:
+    case 8:
+    case 10:
+    case 12:
+        cout << "31 days month\n";
+        break;
+    default:
+        cout << "Invalid Input.\n";
+        break;
+    }
+
+    cout << "\n______________________________________________________\n";
+
+    cout << "Write out all the numbers between 100-500 that are divisible by 3 & 5\n";
+    int i = 100;
+    while (i <= 500)
+    {
+        if (i % 3 == 0 && i % 5 == 0)
+            cout << i << " ";
+        i++;
+    }
+
+    cout << "\n______________________________________________________\n";
+    int number;
+    cout << "Enter a number to count digit in that number.\n";
+    cout << "Number : ";
+    cin >> number;
+    if (number == 0)
+    {
+        cout << "You have enterd 0.\n";
+    }
+    else
+    {
+        if (number < 0)
+            number = -1 * number; // Taking absolute of a number if the number is negative, mean less than zero.
+
+        int counter = 0;
+        while (number > 0)
+        {
+            // number = number / 10;
+            number /= 10; // when the number is divided by 10 the decimal part will not be entertained again because we take number INT datatype.
+            counter++;
+        }
+        cout << "Number contain " << counter << " digits.\n";
+    }
+
+    int num;
+    cout << "\n______________________________________________________\n";
+    cout << "This Program will reverse a number.\n";
+    cout << "Number: ";
+    cin >> num;
+    if (num == 0)
+    {
+        cout << "you have enterd 0.\n";
+    }
+    else
+    {
+        int reversedNumber = 0;
+        while (num != 0)
+        {
+            reversedNumber = reversedNumber * 10;
+            int lastDigit = num % 10;
+            reversedNumber = reversedNumber + lastDigit;
+            num = num / 10;
+        }
+        cout << "Reversed: " << reversedNumber << endl;
+    }
+
+    cout << "\t\tEnter Your PIN to Log In to Your Account\n";
+    int UserPin = 1234, Pin, errorCounter = 0;
+    do
+    {
+
+        cout << "Enter PIN: ";
+        cin >> Pin;
+        if (Pin != UserPin)
+            errorCounter++;
+
+    } while (errorCounter < 3 && Pin != UserPin);
+    if (errorCounter < 3)
+    {
+        cout << "Log In Succesfull.\n";
+    }
+    else
+        cout << "Too many Attempts.\nUser Blocked...\n";
+
+    cout << "\n______________________________________________________\n";
+    int aNumber, factorial = 1;
+    cout << "Find Factorial of a Number.\n Number: ";
+    cin >> aNumber;
+    if (aNumber < 0)
+    {
+        cout << "Number must be greater than 0\n";
+    }
+    else
+    {
+
+        for (int i = aNumber; i > 0; i--)
+        {
+            factorial = factorial * i;
+        }
+        cout << aNumber << "! = " << factorial << endl;
+    }
+    cout << "\n______________________________________________________\n";
+
+    int totalPaper, SumOfMarks = 0, marks;
+    cout << "Calculate Avg and Sum of Total Papers.\nEnter Number of Papers: ";
+    cin >> totalPaper;
+    for (int i = 0; i < totalPaper; i++)
+    {
+        do
+        {
+            cout << "Enter marks of " << i + 1 << " paper : ";
+            cin >> marks;
+        } while (marks < 0 && marks > 100);
+        SumOfMarks = SumOfMarks + marks;
+    }
+    cout << "Total marks : " << SumOfMarks << endl;
+    float Average = (float)SumOfMarks / totalPaper;
+    cout << "Average marks: " << Average;
+
+    cout << "\n______________________________________________________\n";
+    system("cls");
+    string color, celebrity, place;
+    cout << "Enter a color: ";
+    getline(cin, color);
+    cout << "Your favourite Acter : ";
+    getline(cin, celebrity);
+    cout << "Your favourite place : ";
+    getline(cin, place);
+    cout << "Roses are " << color << endl;
+    cout << "My Favourite acter is " << celebrity << endl;
+    cout << "I love to go to " << place << endl;
+
+
+    cout << "\n______________________________________________________\n";
+    cout << "Multiplication from 1 to 10 with each number upto 10.\n";
+    for (int i = 1; i <= 10; i++)
+    {
+        for (int j = 1; j < 11; j++)
+        {
+            cout << i << " x " << j << " = " << i * j << endl;
+        }
+        cout << endl;
+    }
+
+    system("cls");
+    cout << "\n______________________________________________________\n";
+    int width, height;
+    char character;
+    cout << "Width: ";
+    cin >> width;
+    cout << "height: ";
+    cin >> height;
+    cout << "Enter Character/symbol that you want to display: ";
+    cin >> character;
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            cout << setw(3) << character; // To use setw() function we should need to include <iomanip> library.
+        }
+        cout << endl;
+    }
+
+    cout << "\n______________________________________________________\n";
+
+    int heightOfTriangle;
+    char symbol;
+    cout << "Enter height of triangle: ";
+    cin >> heightOfTriangle;
+    cout << "Enter symbol: ";
+    cin >> symbol;
+    for (int i = 1; i <= heightOfTriangle; i++)
+    {
+        for (int j = 1; j <= i; j++)
+        {
+            cout << symbol << " ";
+        }
+        cout << endl;
+    }
+    cout << "\n____Inverted Triangle____\n\n";
+    for (int i = heightOfTriangle; i > 0; i--)
+    {
+        for (int j = 1; j <= i; j++)
+        {
+            cout << symbol << " ";
+        }
+        cout << endl;
+    }
+
+    system("cls");
+    cout << "\n______________________________________________________\n";
+    cout << "\n____Function Call______\n";
+    float num1, num2; 
+    cout << "Enter two number: ";
+    cin >> num1 >> num2;
+    cout << "\n\tChoose Operation\n1. Add them\n2. Subtract them\n3. Divide them\n";
+    int option;
+    cin >> option;
+    switch (option)
+    {
+    case 1:
+        cout << " Addition of these number is " << sum(num1, num2);
+        break;
+    case 2:
+        cout << " Subtraction of these number is " << subtract(num1, num2);
+        break;
+    case 3:
+        cout << " Division of these number is " << divide(num1, num2);
+        break;
+
+    default:
+        cout << "Invalid Selection\n";
+        break;
+    }
+     */
+    cout << "\n______________________________________________________\n";
+
     // system("cls"); Clear Screen or terminal
-    // cout << "\nWatch Video from 2:50:00\n";
+    // cout << "\nWatch Video from 5:44:00\n";
     system("pause>0");
 
     return 0;

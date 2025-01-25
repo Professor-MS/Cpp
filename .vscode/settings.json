@@ -4,7 +4,8 @@
     "ostream": "cpp",
     "istream": "cpp",
     "cmath": "cpp",
-    "string": "cpp"
+    "string": "cpp",
+    "typeinfo": "cpp"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",
