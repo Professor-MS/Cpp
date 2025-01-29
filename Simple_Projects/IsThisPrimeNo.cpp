@@ -4,8 +4,9 @@ using namespace std;
 
 int main()
 {
+    system("cls");
     int number, i = 2;
-    cout << "Enter your Number." << endl;
+    cout << "Enter your Number: ";
     cin >> number;
 
     bool isPrime = true; // Assume prime initially
@@ -25,6 +26,6 @@ int main()
     {
         cout << number << " is prime." << endl;
     }
-    system("pause");
+    system("pause>0");
     return 0;
 }

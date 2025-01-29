@@ -1,7 +1,8 @@
 #include <iostream>
+#include <list>
 #include <iomanip>
 using namespace std;
-float sum(float a, int b)
+/* float sum(float a, int b)
 {
     return a + b;
 }
@@ -13,7 +14,99 @@ float divide(float a, int b)
 {
     return a / b;
 }
+void introduceYourself(string name, string city, int age = 0)
+{
+    cout << "My name is " << name << endl;
+    cout << "I am from " << city << endl;
+    if (age != 0)
+        cout << "I am " << age << " years old\n";
+};
+// function Overloading: Function with same name but different parameter
+int sum(int a, int b)
+{
+    return a + b;
+}
+float sum(float a, float b)
+{
+    return a + b;
+}
+double sum(double a, double b)
+{
+    return a + b;
+}
+int sum(int a, int b, int c)
+{
+    return a + b + c;
+}
+float sum(float a, float b, float c)
+{
+    return a + b + c;
+}
+// Generic Function: Every type of value can pass to this single function Swap();
+// template <typename T> //both is used for template
+template <class Type>
+void Swap(Type &a, Type &b)
+{
+    Type temp = a;
+    a = b;
+    b = temp;
+}
+int RecursiveSum(int m, int n)
+{
+    if (m == n)
+    {
+        return m;
+    }
+    return m + RecursiveSum(m + 1, n);
+} */
+int recursiveFactorial(int n)
+{
+    if (n == 0)
+        return 1;
+    return n * recursiveFactorial(n - 1);
+}
 
+class YouTubeChannel
+{
+private:
+    string Name, ownerName;
+    int subscriberCount;
+    list<string> PublishedVideoTitle;
+
+public:
+    YouTubeChannel(string name, string OwnerName)
+    {
+        Name = name;
+        ownerName = OwnerName;
+        subscriberCount = 0;
+    }
+    void GetInfo()
+    {
+        cout << "Channel Name: " << Name << endl;
+        cout << "Owner Name: " << ownerName << endl;
+        cout << "Subscriber: " << subscriberCount << endl;
+        cout << "Videos: " << endl;
+        for (string videoTitle : PublishedVideoTitle)
+        {
+            cout << videoTitle << endl;
+        }
+    }
+    void Subscribe()
+    {
+        subscriberCount++;
+    }
+    void UnSubscribe()
+    {
+        if (subscriberCount > 0)
+        {
+            subscriberCount--;
+        }
+    }
+    void PublishedVideo(string title)
+    {
+        PublishedVideoTitle.push_back(title);
+    }
+};
 int main()
 {
 
@@ -476,8 +569,8 @@ int main()
 
     system("cls");
     cout << "\n______________________________________________________\n";
-    cout << "\n____Function Call______\n";
-    float num1, num2; 
+    cout << "\n____Function Call with return type______\n";
+    float num1, num2;
     cout << "Enter two number: ";
     cin >> num1 >> num2;
     cout << "\n\tChoose Operation\n1. Add them\n2. Subtract them\n3. Divide them\n";
@@ -499,11 +592,147 @@ int main()
         cout << "Invalid Selection\n";
         break;
     }
-     */
     cout << "\n______________________________________________________\n";
+    cout << "\n____Function call with Parameter_____\n";
+    introduceYourself("Professor", "Peshawar", 21);
+    introduceYourself("Hamza", "Charssadda"); // here age is missing for 2nd user so we put a condition for it in the function, that not to show any thing related to age if age is not pass.
+    string name, city;
+    int age;
+    cout << "Name: ";
+    cin >> name;
+    cout << "City: ";
+    cin >> city;
+    cout << "Age: ";
+    cin >> age;
+    introduceYourself(name, city, age);
 
+    system("cls");
+    cout << "\n______________________________________________________\n";
+    int number;
+    cout << "Enter Number: ";
+    cin >> number;
+    bool isPrime = true;
+    for (int i = 2; i < (number / 2); i++)
+    {
+        if (number % i == 0)
+        {
+            isPrime = false;
+            break;
+        }
+    }
+
+    if (isPrime) // isPrime=true
+        cout << number << " is Prime number \n";
+    else
+        cout << number << " is not Prime number \n";
+
+    cout << "\n______________________________________________________\n";
+    cout << "____________Function Overloading__________\n";
+    cout << "double Function call Sum is " << sum(2.2, 3.3) << endl;
+    cout << "int Function call Sum is " << sum(23, 33) << endl;
+    cout << "Three parameter float Function call Sum is " << sum(23, 3.3, 3.4) << endl;
+    system("cls");
+    cout << "\n______________________________________________________\n";
+    cout << "\n\t____Welcome to ATM Machine____\n";
+    string Username, userName = "salman";
+    int password = 123;
+    int currentBalance = 0, DepositMoney = 0, balanceWithdraw = 0;
+    int option;
+
+    cout << "Enter Username: ";
+    cin >> Username;
+    cout << "Enter Password: ";
+    cin >> password;
+    if (Username == userName && password == 123)
+    {
+        cout << "\tLog In Succesfull !\n";
+        do
+        {
+            cout << "********MENU********\n";
+            cout << "1. Check Balance\n2. Deposit money\n3. Withdraw.\n4. Exit\n";
+            cout << "***********************\n";
+            cout << "Option: ";
+            cin >> option;
+            system("cls");
+            switch (option)
+            {
+            case 1:
+                cout << "Your current balance is " << currentBalance << "$." << endl;
+                break;
+            case 2:
+                cout << "Enter amount to Deposit: ";
+                cin >> DepositMoney;
+                currentBalance += DepositMoney;
+                cout << "Now Your current balance is " << currentBalance << "$." << endl;
+                break;
+            case 3:
+                cout << "Enter amount to withdraw: ";
+                cin >> balanceWithdraw;
+                if (balanceWithdraw > currentBalance)
+                {
+                    cout << "Insufficient Balance\n";
+                }
+                else
+                {
+                    currentBalance -= balanceWithdraw;
+                    cout << "Withdraw Successfull\n";
+                    cout << "Now your current balance is " << currentBalance << "$." << endl;
+                }
+                break;
+            }
+        } while (option == 1 || option == 2 || option == 3);
+        if (option == 4)
+        {
+            cout << "Exit Successfull.\nThanks for Using Our ATM\n";
+        }
+        else
+            cout << "Invalid Selection\n";
+    }
+    else
+    {
+        cout << "Incorrect Username or Password. Try Again\n";
+    }
+
+    cout << "\n______________________________________________________\n";
+    cout<<"Swaping of two Numbers.\n";
+    char a = 'a', b = 'b';
+    int c = 5, d = 10;
+    cout << a << " - " << b << endl;
+    Swap(a, b);
+    cout << a << " - " << b << endl;
+    cout << c << " - " << d << endl;
+    Swap(c, d);
+    cout << c << " - " << d << endl;
+
+    cout << "\n______________________________________________________\n";
+    cout << "Finding sum between two numbers\n";
+    int m = 2, n = 5;
+    int sum = 0;
+    for (int i = m; i <= n; i++) // sum between m-n
+    {
+        sum += i;
+    }
+    cout << "Loop Sum is : " << sum << endl;
+    cout << "Recursive SUM is : " << RecursiveSum(m, n) << endl;
+    cout << "\n______________________________________________________\n";
+    cout<<"___Finding Factorial of a number.____\n";
+    int n = 4;
+    cout << "factorial is : " << recursiveFactorial(n);
+    */
+
+    cout << "\n______________________________________________________\n";
+    cout << "*****************OOPS Started*****************\n";
+    YouTubeChannel ytchannel1("MS-Professor", "Salman");
+    ytchannel1.PublishedVideo("C++ for Beginners");
+    ytchannel1.PublishedVideo("Python for Beginners to Advance");
+    ytchannel1.PublishedVideo("Complete HTML & CSS for Beginners ");
+    ytchannel1.Subscribe();
+    ytchannel1.Subscribe();
+    ytchannel1.Subscribe();
+    ytchannel1.UnSubscribe();
+    ytchannel1.GetInfo();
     // system("cls"); Clear Screen or terminal
-    // cout << "\nWatch Video from 5:44:00\n";
+    // cout << "\nWatch Video from :08:09:00\n";
     system("pause>0");
 
     return 0;

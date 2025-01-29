@@ -9,12 +9,12 @@ public:
     int subCount;
     int vidVeiws;
     list<string> publishVideoTitle;
-    youTubeChannel(string name, string OwnerName, int subscriber, int viewer)
+    youTubeChannel(string name, string OwnerName)
     {
         Name = name;
         ownerName = OwnerName;
-        subCount = subscriber;
-        vidVeiws = viewer;
+        subCount = 0;
+        vidVeiws = 0;
     }
     void GetInfo()
     {
@@ -29,21 +29,29 @@ public:
         }
     }
 };
+class CookingYoutubeChannel : public youTubeChannel
+{
+    CookingYoutubeChannel(string Name, string ownerName) : youTubeChannel(string Name, string OwnerName)
+    {
+    }
+};
 int main()
 {
+    system("cls");
 
-    youTubeChannel ytChannel("MS Professor", "Salman", 56, 230);
+    youTubeChannel ytChannel("MS Professor", "Salman");
     ytChannel.publishVideoTitle.push_back("Web Development Full Course HTML, CSS");
     ytChannel.publishVideoTitle.push_back("Complete Python Course For Beginners.");
     ytChannel.publishVideoTitle.push_back("JavaScript Complete Crash Course for Beginners.");
     ytChannel.GetInfo();
     cout << "__________________________________________________" << endl;
-    youTubeChannel YTChannel("MS Tech", "Professor", 26, 67);
+    youTubeChannel YTChannel("MS Tech", "Professor");
     YTChannel.publishVideoTitle.push_back("Advance Adobe After Effects Full Course");
     YTChannel.publishVideoTitle.push_back("Adobe Illustrator Full Course For Beginners");
     YTChannel.publishVideoTitle.push_back("Complete Adobe Photoshop Course for Beginners");
     YTChannel.GetInfo();
     cout << "__________________________________________________" << endl;
-    system("pause");
+
+    system("pause>0");
     return 0;
 }
